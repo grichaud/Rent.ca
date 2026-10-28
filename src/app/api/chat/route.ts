@@ -12,6 +12,11 @@ import type { AIContext } from '@/features/ai-assistant/types/ai'
 const openrouter = createOpenAI({
   baseURL: 'https://openrouter.ai/api/v1',
   apiKey: process.env.OPENROUTER_API_KEY ?? '',
+  // OpenRouter attributes usage to an app by HTTP-Referer; without it the calls show up as "Unknown".
+  headers: {
+    'HTTP-Referer': 'https://rent-ca.vercel.app',
+    'X-Title': 'Rent.ca (Next.js)',
+  },
 })
 
 // ---------------------------------------------------------------------------
